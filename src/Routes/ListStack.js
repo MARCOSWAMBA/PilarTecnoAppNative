@@ -1,6 +1,6 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import List from '../List/List';
-import Detalle from '../List/ListDetail';
+import List from '../Screems/List/List';
+import Detalle from '../Screems/List/ListDetail';
 
 const ListStack = createStackNavigator();
 

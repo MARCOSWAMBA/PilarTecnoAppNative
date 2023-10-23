@@ -1,5 +1,5 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import Maps from '../Map/Maps';
+import Maps from '../Screems/Map/Maps';
 
 const MapsStack = createStackNavigator();
 

@@ -1,5 +1,5 @@
 import {createStackNavigator} from '@react-navigation/stack';
-import Home from '../Home/index';
+import Home from '../Screems/Home/index';
 
 const HomeStack = createStackNavigator();
 
