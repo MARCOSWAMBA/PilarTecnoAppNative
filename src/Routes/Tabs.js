@@ -49,7 +49,7 @@ export const Tabs = () => {
         }}
       />
       <Tab.Screen
-        name="MapTab"
+        name="MapsTab"
         component={MapsStackScreen}
         options={{
           tabBarIcon: ({color}) => (

@@ -7,6 +7,7 @@ import {
   StyleSheet,
   Text,
   View,
+  Pressable,
 } from 'react-native';
 import {Icon} from '@rneui/themed';
 const Width = Dimensions.get('window').width;
@@ -15,6 +16,19 @@ const Height = Dimensions.get('window').height;
 const Home = () => {
   const hundlePressHome = () => {
     console.log('hola desde home');
+  };
+
+  const hundlePressProfile = () => {
+    console.log('hola desde home');
+    Profile.navigation.navigate(ProfileTab);
+  };
+  const hundlePressList = () => {
+    console.log('hola desde home');
+    Profile.navigation.navigate(ListsTab);
+  };
+  const hundlePressMaps = () => {
+    console.log('hola desde home');
+    Profile.navigation.navigate(MapsTab);
   };
 
   return (
@@ -28,11 +42,11 @@ const Home = () => {
               justifyContent: 'flex-end',
               paddingBottom: '5%',
             }}>
-            <TouchableOpacity
+            <Pressable
               style={{...styles.gridButton, backgroundColor: 'red'}}
               onPress={hundlePressHome}>
               <Text style={{...styles.buttonTitle}}>Home</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
           <View
             style={{
@@ -40,10 +54,11 @@ const Home = () => {
               justifyContent: 'flex-end',
               paddingBottom: '5%',
             }}>
-            <TouchableOpacity
-              style={{...styles.gridButton, backgroundColor: 'pink'}}>
-              <Text style={{...styles.buttonTitle}}>Pokemons</Text>
-            </TouchableOpacity>
+            <Pressable
+              style={{...styles.gridButton, backgroundColor: 'pink'}}
+              onPress={hundlePressList}>
+              <Text style={{...styles.buttonTitle}}>Lista</Text>
+            </Pressable>
           </View>
         </View>
         <View style={{...styles.gridRow, flexDirection: 'row'}}>
@@ -53,10 +68,11 @@ const Home = () => {
               justifyContent: 'flex-start',
               paddingTop: '5%',
             }}>
-            <TouchableOpacity
-              style={{...styles.gridButton, backgroundColor: 'blue'}}>
+            <Pressable
+              style={{...styles.gridButton, backgroundColor: 'blue'}}
+              onPress={hundlePressMaps}>
               <Text style={{...styles.buttonTitle}}>Mapas</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
           <View
             style={{
@@ -64,10 +80,11 @@ const Home = () => {
               justifyContent: 'flex-start',
               paddingTop: '5%',
             }}>
-            <TouchableOpacity
-              style={{...styles.gridButton, backgroundColor: 'green'}}>
+            <Pressable
+              style={{...styles.gridButton, backgroundColor: 'green'}}
+              onPress={hundlePressProfile}>
               <Text style={{...styles.buttonTitle}}>Perfil</Text>
-            </TouchableOpacity>
+            </Pressable>
           </View>
         </View>
       </SafeAreaView>

@@ -11,7 +11,7 @@ const Maps = () => {
       <SafeAreaView styles={styles.Container}>
         <Header />
         <View style={{...styles.gridRow, flexDirection: 'row'}}>
-          <Text style={{fontSize: 20}}>Login</Text>
+          <Text style={{fontSize: 20}}>Mapas</Text>
         </View>
       </SafeAreaView>
     </>

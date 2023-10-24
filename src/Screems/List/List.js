@@ -1,17 +1,33 @@
 import Header from '../../components/header';
 import React from 'react';
-import {SafeAreaView, Dimensions, StyleSheet, Text, View} from 'react-native';
+import {
+  SafeAreaView,
+  Dimensions,
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+} from 'react-native';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 const List = () => {
+  const hundlePress = () => {
+    props.navigation.navigate('ListaDetail');
+  };
+
   return (
     <>
       <SafeAreaView styles={styles.Container}>
         <Header />
         <View style={{...styles.gridRow, flexDirection: 'row'}}>
           <Text style={{fontSize: 20}}>Listas</Text>
+          <Pressable
+            style={{...styles.gridButton, backgroundColor: 'red'}}
+            onPress={hundlePress}>
+            <Text style={{...styles.buttonTitle}}>Ir al Detalle</Text>
+          </Pressable>
         </View>
       </SafeAreaView>
     </>

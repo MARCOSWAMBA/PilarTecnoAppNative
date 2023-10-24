@@ -1,6 +1,14 @@
 import Header from '../../components/header';
 import React from 'react';
-import {SafeAreaView, Dimensions, StyleSheet, Text, View} from 'react-native';
+import {
+  SafeAreaView,
+  Dimensions,
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+} from 'react-native';
+import {Icon} from '@rneui/themed';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
@@ -9,9 +17,19 @@ const Detalle = () => {
   return (
     <>
       <SafeAreaView styles={styles.Container}>
-        <Header />
+        <Header
+          leftComponent={
+            <View style={styles.headerRight}>
+              <TouchableOpacity
+                style={{marginLeft: 10}}
+                onPress={() => props.navigation.goBack()}>
+                <Icon type="antdesign" name="rocket1" color="white" />
+              </TouchableOpacity>
+            </View>
+          }
+        />
         <View style={{...styles.gridRow, flexDirection: 'row'}}>
-          <Text style={{fontSize: 20}}>Listas</Text>
+          <Text style={{fontSize: 20}}>Detalle</Text>
         </View>
       </SafeAreaView>
     </>
