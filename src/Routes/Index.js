@@ -4,15 +4,17 @@ import {Tabs} from './Tabs';
 import Login from '../Screems/Auth/Login';
 import List from '../Screems/List/List';
 import ListDetail from '../Screems/List/ListDetail';
+import {UseSelector} from 'react-redux';
+import {appSelector} from '../Redux/AppRedux';
 
 const Stack = createStackNavigator();
 
 export default AppStack = () => {
-  const isLogged = true;
+  const isLogged = useSelector(appSelector.jwt);
 
   return (
     <Stack.Navigator screenOptions={{headerShown: false}}>
-      {true ? (
+      {isLogged ? (
         <Stack.Screen name="AppStack" component={Tabs} />
       ) : (
         <Stack.Screen name="LogIn" component={Login} />

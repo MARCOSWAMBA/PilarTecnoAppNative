@@ -9,7 +9,6 @@ const Login = () => {
   return (
     <>
       <SafeAreaView styles={styles.Container}>
-        <Header />
         <View style={{...styles.gridRow, flexDirection: 'row'}}>
           <Text style={{fontSize: 20}}>Login</Text>
         </View>
