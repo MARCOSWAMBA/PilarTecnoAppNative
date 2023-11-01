@@ -1,16 +1,62 @@
-import Header from '../../components/header';
 import React from 'react';
-import {SafeAreaView, Dimensions, StyleSheet, Text, View} from 'react-native';
+import {
+  SafeAreaView,
+  Dimensions,
+  StyleSheet,
+  TextInput,
+  View,
+  KeyboardAvoidingView,
+  TouchableOpacity,
+} from 'react-native';
+import {Input, Button} from 'react-native-elements';
+import {useDispatch} from 'react-redux';
+import {appActions} from '../../Redux/AppRedux';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const [email, setEmail] = useState('');
+  const [pw, setPW] = useState('');
+
+  handleChangeEmail = value => {
+    console.log(value);
+    setEmail(value);
+  };
+  handleChangePW = value => {
+    setPW(value);
+  };
+  handlePress = () => {
+    dispatch(appActions.setToken(true));
+  };
   return (
     <>
       <SafeAreaView styles={styles.Container}>
-        <View style={{...styles.gridRow, flexDirection: 'row'}}>
-          <Text style={{fontSize: 20}}>Login</Text>
+        <View style={styles.formContainer}>
+          <View>
+            <Input
+              containerStyle={styles.input}
+              value={email}
+              onChangeText={value => handleChangeEmail(value)}
+              placeholder="Email"
+              keyboardType="email-address"
+            />
+          </View>
+          <View>
+            <Input
+              style={styles.input}
+              value={pw}
+              onChangeText={value => handleChangePW(value)}
+              placeholder="Contraseña"
+              secureTextEntry={true}
+            />
+          </View>
+        </View>
+        <View style={styles.button}>
+          <Button onPress={handlePress}>Ingresar</Button>
+          <Text>|</Text>
+          <Button onPress={handlePress}>Registrarse</Button>
         </View>
       </SafeAreaView>
     </>
@@ -18,10 +64,25 @@ const Login = () => {
 };
 
 const styles = StyleSheet.create({
-  gridContainer: {
-    flex: 1,
+  formContainer: {
     heid: Height,
     Width: Width,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  button: {
+    flexDirection: 'row',
+    marginTop: '15%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    width: Width * 9,
+  },
+  input: {
+    height: 40,
+    margin: 12,
+    width: Width * 0.9,
+    borderWidth: 1,
+    padding: 10,
   },
   gridColumn: {
     flex: 1,

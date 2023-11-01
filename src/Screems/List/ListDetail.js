@@ -1,5 +1,5 @@
 import Header from '../../components/header';
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
   SafeAreaView,
   Dimensions,
@@ -9,11 +9,29 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {Icon} from '@rneui/themed';
+import {getPokemon} from '../../Api';
 
 const Width = Dimensions.get('window').width;
 const Height = Dimensions.get('window').height;
 
-const Detalle = () => {
+const Detalle = props => {
+  const {url} = props.route.params.item;
+  const [abilities, setAbilities] = useState(null);
+  const [habitat, setHabitad] = useState(null);
+  const [species, setSpecies] = useState(null);
+
+  useEffect(() => {
+    getPokemonDetail();
+  }, [props]);
+
+  getPokemonDetail = () => {
+    getPokemon(url).then(data => {
+      console.log(data);
+      setAbilities(data.abilities);
+      setHabitad(data.habitat);
+      setSpecies(data.species);
+    });
+  };
   return (
     <>
       <SafeAreaView styles={styles.Container}>
@@ -23,13 +41,15 @@ const Detalle = () => {
               <TouchableOpacity
                 style={{marginLeft: 10}}
                 onPress={() => props.navigation.goBack()}>
-                <Icon type="antdesign" name="rocket1" color="white" />
+                <Icon type="font-awesome-5" name="arrow-left" color="white" />
               </TouchableOpacity>
             </View>
           }
         />
         <View style={{...styles.gridRow, flexDirection: 'row'}}>
-          <Text style={{fontSize: 20}}>Detalle</Text>
+          <Text style={{fontSize: 20}}>
+            {pokemon && JSON.stringify(pokemon)}
+          </Text>
         </View>
       </SafeAreaView>
     </>

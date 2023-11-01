@@ -11,7 +11,10 @@ const Profile = () => {
       <SafeAreaView styles={styles.Container}>
         <Header />
         <View style={{...styles.gridRow, flexDirection: 'row'}}>
-          <Text style={{fontSize: 20}}>Perfil</Text>
+          <Text style={styles.name}>{user.name}</Text>
+          <Text style={styles.email}>{user.email}</Text>
+          <Text style={styles.description}>{user.description}</Text>
+          <Button title="Cerrar Sesión" onPress={onLogout} />
         </View>
       </SafeAreaView>
     </>
@@ -29,6 +32,14 @@ const styles = StyleSheet.create({
   },
   gridRow: {
     flex: 1,
+  },
+  name: {
+    fontSize: 24,
+    fontWeight: 'bold',
+  },
+  email: {
+    fontSize: 16,
+    margin: 10,
   },
   gridButton: {
     backgroundColor: '#606060',
